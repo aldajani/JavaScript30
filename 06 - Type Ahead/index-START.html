@@ -26,6 +26,13 @@ fetch(endpoint)
   })
   .catch(err => console.log(err));
 
+function findMatches (wordToMatch, cities) {
+  return cities.filter(city => {
+    const regex = new RegExp(wordToMatch, 'gi');
+    return city.city.match(regex) || city.state.match(regex);
+  });
+}
+
 </script>
 </body>
 </html>
