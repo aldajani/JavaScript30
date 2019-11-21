@@ -33,6 +33,26 @@ function findMatches (wordToMatch, cities) {
   });
 }
 
+function displayMatches () {
+  const matchArr = findMatches(this.value, cities);
+  const html = matchArr.map(match => {
+    return `
+      <li>
+        <span class="name">${match.city}, ${match.state}</span>
+        <span class="population">Population: ${match.population}</span>
+      </li>
+    `;
+  }).join('');
+  list.innerHTML = html;
+}
+
+const searchInput = document.querySelector('.search');
+const list = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
+
+
 </script>
 </body>
 </html>
